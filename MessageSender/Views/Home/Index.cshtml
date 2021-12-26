@@ -1,0 +1,40 @@
+﻿@model MessageSender.Models.MessageModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Message Sender</p>
+</div>
+
+
+<div class="container">
+    <form id="SendMessageTemplate">
+        <div class="row">
+            <div class="col-sm-6"><label for="MobileNumber">Mobile Number</label> ( format : <span class="Text-danger">Country Code Mobile Number</span> )</div>
+            <div class="col-sm-6">
+                <input class="form-control" asp-for="MobileNumber" />
+                <span asp-validation-for="MobileNumber" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6"><label for="MessageText">Message Text</label></div>
+            <div class="col-sm-6">
+                <input class="form-control" asp-for="MessageText" />
+                <span asp-validation-for="MessageText" class="text-danger" />
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-12">
+            <a class="btn btn-success form-control" onclick="SendMessage(this)">Send</a>
+        </div>
+    </div>
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
